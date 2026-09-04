@@ -3,199 +3,256 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VetFlowCare — Recuperação de Dados</title>
+<title>VetFlowCare — Recuperação Completa</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   background:linear-gradient(135deg,#0d2240 0%,#1E3A6E 50%,#0d6060 100%);
-  min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
-.card{background:#fff;border-radius:24px;padding:28px 24px;max-width:380px;width:100%;
-  box-shadow:0 20px 60px rgba(0,0,0,.3)}
-.logo{text-align:center;margin-bottom:20px}
-.logo .title{font-size:24px;font-weight:900;color:#1E3A6E}
-.logo .title span{color:#2DC0AE}
-.logo .sub{font-size:11px;letter-spacing:2px;color:#94A3B8;margin-top:2px}
-h2{font-size:15px;font-weight:800;color:#1E293B;margin-bottom:6px}
-p{font-size:13px;color:#64748B;line-height:1.6;margin-bottom:12px}
-.stat-box{background:#F0FDFB;border:1.5px solid #A7F3D0;border-radius:12px;
-  padding:14px 16px;margin-bottom:16px}
-.stat{display:flex;justify-content:space-between;font-size:13px;
-  padding:4px 0;border-bottom:1px solid #E2F7F2;color:#1E293B}
-.stat:last-child{border:none}
-.stat b{color:#1E3A6E}
-.btn{width:100%;padding:15px;border-radius:14px;border:none;cursor:pointer;
-  font-size:15px;font-weight:800;margin-bottom:8px;transition:all .2s}
+  min-height:100vh;padding:20px}
+.card{background:#fff;border-radius:20px;padding:24px;max-width:400px;
+  margin:0 auto;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.logo{text-align:center;margin-bottom:18px}
+.logo h1{font-size:22px;font-weight:900;color:#1E3A6E}
+.logo h1 span{color:#2DC0AE}
+.logo p{font-size:11px;letter-spacing:2px;color:#94A3B8}
+h2{font-size:13px;font-weight:800;color:#1E293B;margin:14px 0 6px}
+.stat{background:#F0FDFB;border:1.5px solid #A7F3D0;border-radius:10px;
+  padding:12px 14px;margin-bottom:10px}
+.stat-row{display:flex;justify-content:space-between;font-size:13px;
+  padding:3px 0;border-bottom:1px solid #D1FAE5;color:#1E293B}
+.stat-row:last-child{border:none}
+.stat-row b{color:#1E3A6E}
+.snap-item{display:flex;justify-content:space-between;align-items:center;
+  padding:8px 0;border-bottom:1px solid #F1F5F9;font-size:13px}
+.snap-item:last-child{border:none}
+.snap-label{color:#1E293B}
+.snap-key{font-size:10px;color:#94A3B8}
+.btn{width:100%;padding:13px;border-radius:12px;border:none;cursor:pointer;
+  font-size:14px;font-weight:800;margin-bottom:8px}
 .btn-primary{background:linear-gradient(135deg,#2DC0AE,#1a9d8e);color:#fff}
-.btn-primary:hover{opacity:.9}
-.btn-secondary{background:#F1F5F9;color:#475569}
-.alert{border-radius:12px;padding:12px 14px;font-size:12px;line-height:1.6;margin-bottom:14px}
-.alert-red{background:#FEF2F2;border:1.5px solid #FCA5A5;color:#991B1B}
-.alert-yellow{background:#FFFBEB;border:1.5px solid #FCD34D;color:#78350F}
-.alert-green{background:#F0FDF4;border:1.5px solid #86EFAC;color:#14532D}
-.step{display:flex;gap:10px;align-items:flex-start;padding:8px 0;
-  border-bottom:1px solid #F1F5F9;font-size:13px;color:#475569}
-.step:last-child{border:none}
-.step-num{width:24px;height:24px;border-radius:50%;background:#1E3A6E;
-  color:#fff;display:flex;align-items:center;justify-content:center;
-  font-size:11px;font-weight:800;flex-shrink:0;margin-top:1px}
-#status{font-size:13px;color:#2DC0AE;font-weight:700;text-align:center;
-  min-height:20px;margin-top:8px}
-.hidden{display:none}
+.btn-secondary{background:#EFF6FF;color:#1D4ED8;border:1.5px solid #BFDBFE}
+.btn-snap{background:#F0FDFB;color:#065F46;border:1.5px solid #A7F3D0;
+  padding:6px 10px;border-radius:8px;font-size:11px;font-weight:700;
+  cursor:pointer;white-space:nowrap}
+.alert-red{background:#FEF2F2;border:1.5px solid #FCA5A5;border-radius:10px;
+  padding:10px 12px;font-size:12px;color:#991B1B;margin-bottom:10px}
+.alert-green{background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:10px;
+  padding:10px 12px;font-size:12px;color:#14532D;margin-bottom:10px}
+.alert-yellow{background:#FFFBEB;border:1.5px solid #FCD34D;border-radius:10px;
+  padding:10px 12px;font-size:12px;color:#78350F;margin-bottom:10px}
+#status{text-align:center;font-size:13px;color:#2DC0AE;font-weight:700;
+  min-height:18px;margin:8px 0}
+.loading{text-align:center;padding:30px;color:#64748B}
 </style>
 </head>
 <body>
 <div class="card">
   <div class="logo">
-    <div class="title">VetFlow<span>Care</span></div>
-    <div class="sub">RECUPERAÇÃO DE DADOS</div>
+    <h1>VetFlow<span>Care</span></h1>
+    <p>RECUPERAÇÃO COMPLETA DE DADOS</p>
   </div>
 
-  <div id="loading" style="text-align:center;padding:20px;color:#64748B;font-size:14px">
-    🔍 Verificando dados salvos...
-  </div>
-
-  <div id="semDados" class="hidden">
-    <div class="alert alert-red">
-      <b>⚠️ Nenhum dado encontrado</b><br>
-      Este celular não possui dados do VetFlowCare salvos neste endereço.<br><br>
-      Os dados podem estar em outro dispositivo ou já foram apagados.
-    </div>
-    <p>Se você tinha dados salvos, tente acessar esta página no celular ou computador onde costumava usar o app.</p>
-  </div>
-
-  <div id="comDados" class="hidden">
-    <div class="alert alert-green" style="margin-bottom:16px">
-      ✅ <b>Dados encontrados!</b> Clique abaixo para exportar.
-    </div>
-
-    <h2>📊 Resumo dos dados encontrados</h2>
-    <div class="stat-box" id="statBox"></div>
-
-    <button class="btn btn-primary" onclick="exportarDados()" id="btnExport">
-      💾 Exportar meus dados agora
-    </button>
-    <div id="status"></div>
-
-    <div class="alert alert-yellow" style="margin-top:14px">
-      <b>📋 Próximo passo:</b><br>
-      Após exportar, abra o app em <b>app.vetflowcare.com.br</b> → Ajustes → Restaurar Backup → selecione o arquivo exportado → escolha <b>Mesclar</b> para unir com seus dados atuais.
-    </div>
-  </div>
-
-  <div id="instrucoes" class="hidden" style="margin-top:4px">
-    <h2 style="margin-bottom:10px">📱 Como usar esta ferramenta</h2>
-    <div class="step"><div class="step-num">1</div><div>Abra esta página no celular onde você usava o VetFlowCare antes</div></div>
-    <div class="step"><div class="step-num">2</div><div>Clique em <b>"Exportar meus dados"</b> — o arquivo baixa automaticamente</div></div>
-    <div class="step"><div class="step-num">3</div><div>Acesse <b>app.vetflowcare.com.br</b> → Ajustes → Restaurar Backup</div></div>
-    <div class="step"><div class="step-num">4</div><div>Selecione o arquivo exportado e escolha <b>Mesclar</b></div></div>
-  </div>
+  <div id="loading" class="loading">🔍 Lendo todos os dados salvos neste celular...</div>
+  <div id="content" style="display:none"></div>
 </div>
 
 <script>
-// ── Lê dados de QUALQUER versão do VetFlowCare armazenada neste domínio ──
-function lerDados(){
-  const chaves = ['vetflowcare_v5','vetflowcare_v4','vetflowcare_v3','vetflowcare'];
-  for(const k of chaves){
-    try{
-      const raw = localStorage.getItem(k);
-      if(raw){
-        const db = JSON.parse(raw);
-        if(db && (db.pets || db.tutors)) return { db, chave: k };
-      }
-    }catch(e){}
-  }
-  return null;
-}
+const IDB_NAME = 'vetflowcare';
+const LS_KEY   = 'vetflowcare_v5';
 
-function fmtData(iso){
-  if(!iso) return '—';
-  const [y,m,d] = iso.split('-');
-  return `${d}/${m}/${y}`;
-}
-
-function exportarDados(){
-  const res = lerDados();
-  if(!res){ alert('Nenhum dado para exportar.'); return; }
-  const { db } = res;
-
-  // Monta um payload enriquecido com metadados
-  const payload = {
-    _meta: {
-      exportadoEm: new Date().toISOString(),
-      origem: location.hostname + location.pathname,
-      ferramenta: 'VetFlowCare Recovery'
-    },
-    ...db
-  };
-
-  const blob = new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'});
-  const url  = URL.createObjectURL(blob);
-  const a    = document.createElement('a');
-  a.href     = url;
-
-  // Nome do arquivo com data mais recente dos dados
-  const datas = [];
-  (db.pets||[]).forEach(p=>{
-    (p.appointments||[]).forEach(a=>{ if(a.date) datas.push(a.date); });
-    (p.vaccines||[]).forEach(v=>{ if(v.applied) datas.push(v.applied); });
+function idbOpen(){
+  return new Promise((res,rej)=>{
+    const r = indexedDB.open(IDB_NAME, 3);
+    r.onsuccess = ()=>res(r.result);
+    r.onerror   = ()=>rej(r.error);
+    r.onupgradeneeded = ()=>{
+      const db = r.result;
+      ['docs','snap','mirror'].forEach(s=>{
+        if(!db.objectStoreNames.contains(s)) db.createObjectStore(s);
+      });
+    };
   });
-  const dataRef = datas.length ? datas.sort().pop() : new Date().toISOString().slice(0,10);
-  a.download = `vetflowcare_recuperado_ate_${dataRef}.json`;
-  document.body.appendChild(a); a.click(); a.remove();
-  URL.revokeObjectURL(url);
-
-  document.getElementById('btnExport').textContent = '✅ Exportado! Agora restaure no app.';
-  document.getElementById('btnExport').style.background = '#059669';
-  document.getElementById('status').textContent = 'Arquivo salvo na pasta de Downloads 📂';
 }
 
-// ── Inicializa ──
-window.addEventListener('load', ()=>{
-  setTimeout(()=>{
-    const res = lerDados();
-    document.getElementById('loading').classList.add('hidden');
-    document.getElementById('instrucoes').classList.remove('hidden');
+function idbGetAll(db, store){
+  return new Promise((res,rej)=>{
+    try{
+      const t = db.transaction(store,'readonly');
+      const s = t.objectStore(store);
+      const keys = [], vals = [];
+      s.openCursor().onsuccess = e=>{
+        const c = e.target.result;
+        if(c){ keys.push(c.key); vals.push(c.value); c.continue(); }
+        else  res({keys,vals});
+      };
+      t.onerror = ()=>rej(t.error);
+    }catch(e){ res({keys:[],vals:[]}); }
+  });
+}
 
-    if(!res){
-      document.getElementById('semDados').classList.remove('hidden');
-      return;
-    }
+function fmtKey(k){
+  const s = String(k);
+  if(s.startsWith('d:')) return '📅 Dia '   + s.slice(2).split('-').reverse().join('/');
+  if(s.startsWith('w:')) return '🗓️ Semana ' + s.slice(2).replace('-W','/');
+  if(s.startsWith('m:')){
+    const [y,m] = s.slice(2).split('-');
+    const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+    return '📆 '+(meses[parseInt(m)-1]||m)+'/'+y;
+  }
+  return '💾 '+s;
+}
 
-    const { db } = res;
-    let pacientes=0, tutores=0, atend=0, vacinas=0, cobr=0, desp=0;
-    tutores   = (db.tutors||[]).length;
-    pacientes = (db.pets||[]).length;
-    cobr      = (db.charges||[]).length;
-    desp      = (db.expenses||[]).length;
-    (db.pets||[]).forEach(p=>{
-      atend  += (p.appointments||[]).length;
-      vacinas+= (p.vaccines||[]).filter(v=>v.applied).length;
-    });
+function baixarJSON(data, nome){
+  const blob = new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = nome;
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(a.href);
+}
 
-    // Data mais antiga e mais recente
+async function init(){
+  let db;
+  try{ db = await idbOpen(); }catch(e){ db = null; }
+
+  // ── Lê localStorage ──
+  let dbMain = null;
+  try{
+    const raw = localStorage.getItem(LS_KEY) || localStorage.getItem('vetflowcare_v4') || localStorage.getItem('vetflowcare');
+    if(raw) dbMain = JSON.parse(raw);
+  }catch(e){}
+
+  // ── Lê snapshots ──
+  let snaps = {keys:[],vals:[]};
+  if(db) try{ snaps = await idbGetAll(db,'snap'); }catch(e){}
+
+  // ── Lê mirror ──
+  let mirror = null;
+  if(db) try{
+    const mAll = await idbGetAll(db,'mirror');
+    const idx = mAll.keys.findIndex(k=>String(k)==='data');
+    if(idx>=0) mirror = mAll.vals[idx];
+    else if(mAll.vals.length>0) mirror = mAll.vals[0];
+  }catch(e){}
+
+  // ── Estatísticas do DB principal ──
+  let pets=0, atend=0, vac=0, cobr=0, tuts=0, dataMin='', dataMax='';
+  if(dbMain){
+    tuts  = (dbMain.tutors||[]).length;
+    pets  = (dbMain.pets||[]).length;
+    cobr  = (dbMain.charges||[]).length;
     const datas = [];
-    (db.pets||[]).forEach(p=>{
+    (dbMain.pets||[]).forEach(p=>{
+      atend += (p.appointments||[]).length;
+      vac   += (p.vaccines||[]).filter(v=>v.applied).length;
       (p.appointments||[]).forEach(a=>{ if(a.date) datas.push(a.date); });
       (p.vaccines||[]).forEach(v=>{ if(v.applied) datas.push(v.applied); });
     });
     datas.sort();
-    const dtMin = datas[0] ? fmtData(datas[0]) : '—';
-    const dtMax = datas[datas.length-1] ? fmtData(datas[datas.length-1]) : '—';
+    if(datas.length){
+      dataMin = datas[0].split('-').reverse().join('/');
+      dataMax = datas[datas.length-1].split('-').reverse().join('/');
+    }
+  }
 
-    document.getElementById('statBox').innerHTML = `
-      <div class="stat"><span>👤 Tutores</span><b>${tutores}</b></div>
-      <div class="stat"><span>🐾 Pacientes</span><b>${pacientes}</b></div>
-      <div class="stat"><span>📅 Atendimentos</span><b>${atend}</b></div>
-      <div class="stat"><span>💉 Vacinas aplicadas</span><b>${vacinas}</b></div>
-      <div class="stat"><span>💰 Cobranças</span><b>${cobr}</b></div>
-      <div class="stat"><span>📆 Período dos dados</span><b>${dtMin} → ${dtMax}</b></div>
-    `;
-    document.getElementById('comDados').classList.remove('hidden');
+  // ── Renderiza ──
+  const div = document.getElementById('content');
+  let html = '';
 
-    // Auto-exporta após 2s
-    setTimeout(exportarDados, 2000);
-  }, 800);
-});
+  // Dados principais
+  if(dbMain && pets > 0){
+    html += `<div class="alert-green">✅ <b>Dados encontrados!</b> ${pets} paciente(s) neste celular.</div>`;
+    html += `<h2>📊 Dados atuais</h2><div class="stat">
+      <div class="stat-row"><span>👤 Tutores</span><b>${tuts}</b></div>
+      <div class="stat-row"><span>🐾 Pacientes</span><b>${pets}</b></div>
+      <div class="stat-row"><span>📅 Atendimentos</span><b>${atend}</b></div>
+      <div class="stat-row"><span>💉 Vacinas aplicadas</span><b>${vac}</b></div>
+      <div class="stat-row"><span>💰 Cobranças</span><b>${cobr}</b></div>
+      ${dataMin ? `<div class="stat-row"><span>📆 Período</span><b>${dataMin} → ${dataMax}</b></div>`:''}
+    </div>
+    <button class="btn btn-primary" onclick="exportarPrincipal()">💾 Exportar dados atuais</button>`;
+  } else if(dbMain){
+    html += `<div class="alert-yellow">⚠️ Dados encontrados mas sem pacientes cadastrados.</div>
+    <button class="btn btn-secondary" onclick="exportarPrincipal()">📥 Exportar mesmo assim</button>`;
+  } else {
+    html += `<div class="alert-red">❌ Nenhum dado encontrado no localStorage deste endereço.</div>`;
+  }
+
+  // Mirror
+  if(mirror){
+    html += `<h2>🪞 Cópia interna (espelho)</h2>
+    <div class="stat"><div class="stat-row"><span>Status</span><b style="color:#2DC0AE">Disponível</b></div></div>
+    <button class="btn btn-secondary" onclick="exportarMirror()">📥 Exportar cópia interna</button>`;
+  }
+
+  // Snapshots
+  if(snaps.keys.length > 0){
+    html += `<h2>📸 Pontos automáticos salvos (${snaps.keys.length})</h2>
+    <div class="alert-green">✅ Encontramos <b>${snaps.keys.length} snapshots</b> — incluindo meses anteriores!</div>
+    <div class="stat" style="padding:0 14px">`;
+    snaps.keys.forEach((k,i)=>{
+      html += `<div class="snap-item">
+        <div><div class="snap-label">${fmtKey(k)}</div>
+        <div class="snap-key">${String(k)}</div></div>
+        <button class="btn-snap" onclick="exportarSnap(${i})">⬇️ Exportar</button>
+      </div>`;
+    });
+    html += `</div>
+    <button class="btn btn-primary" style="margin-top:10px" onclick="exportarTodos()">📦 Exportar TODOS os snapshots</button>`;
+  } else {
+    html += `<div class="alert-yellow" style="margin-top:10px">⚠️ Nenhum snapshot automático encontrado neste endereço.</div>`;
+  }
+
+  // Instruções
+  html += `<div class="alert-yellow" style="margin-top:14px">
+    <b>📋 Como usar os arquivos exportados:</b><br>
+    Acesse <b>app.vetflowcare.com.br</b> → Ajustes → Restaurar Backup → selecione o arquivo → escolha <b>Mesclar</b> para unir com os dados atuais.
+  </div>`;
+  html += `<div id="status"></div>`;
+
+  div.innerHTML = html;
+  document.getElementById('loading').style.display='none';
+  div.style.display='block';
+
+  // ── Funções de exportação ──
+  window._snaps = snaps;
+  window._dbMain = dbMain;
+  window._mirror = mirror;
+
+  window.exportarPrincipal = ()=>{
+    baixarJSON({_meta:{exportadoEm:new Date().toISOString(),origem:location.hostname,tipo:'principal'},...dbMain},
+      `vetflowcare_principal_${new Date().toISOString().slice(0,10)}.json`);
+    document.getElementById('status').textContent='✅ Arquivo exportado — verifique seus Downloads';
+  };
+
+  window.exportarMirror = ()=>{
+    let data = mirror;
+    try{ if(typeof mirror==='string') data = JSON.parse(mirror); }catch(e){}
+    baixarJSON({_meta:{exportadoEm:new Date().toISOString(),origem:location.hostname,tipo:'mirror'},...(data||{mirror_raw:mirror})},
+      `vetflowcare_mirror_${new Date().toISOString().slice(0,10)}.json`);
+    document.getElementById('status').textContent='✅ Cópia interna exportada';
+  };
+
+  window.exportarSnap = (i)=>{
+    const k = snaps.keys[i], v = snaps.vals[i];
+    let data = v;
+    try{ if(typeof v==='string') data = JSON.parse(v); }catch(e){}
+    const nome = `vetflowcare_snap_${String(k).replace(/[^a-zA-Z0-9]/g,'_')}.json`;
+    baixarJSON({_meta:{exportadoEm:new Date().toISOString(),origem:location.hostname,tipo:'snapshot',chave:String(k)},...(typeof data==='object'?data:{raw:v})}, nome);
+    document.getElementById('status').textContent=`✅ Snapshot "${fmtKey(k)}" exportado`;
+  };
+
+  window.exportarTodos = async ()=>{
+    document.getElementById('status').textContent='⏳ Exportando todos os snapshots...';
+    for(let i=0;i<snaps.keys.length;i++){
+      await new Promise(r=>setTimeout(r,300));
+      window.exportarSnap(i);
+    }
+    setTimeout(()=>{ document.getElementById('status').textContent=`✅ ${snaps.keys.length} snapshots exportados!`; },500);
+  };
+}
+
+window.addEventListener('load',()=>{ setTimeout(init,500); });
 </script>
 </body>
 </html>
